@@ -1,0 +1,16 @@
+export const Colors = {
+  blueshGrayDark: '#9298A8',
+  cyanPrimary: '#1089FF',
+  blackNeutral: '#131A1B',
+  blueshGrayLight: '#EBEEF7',
+  grayTint: '#F7F8FC',
+  cyanTint: '#D7EBFF',
+  redNotification: '#FF1E1E',
+  tertiary: '#1089FF',
+  tagsStatusExpired: '#FFE9E9',
+  tagsStatusActive: '#E6FFF8',
+  tagsTextActive: '#008D61',
+  tagsTextExpired: '#FF1E1E',
+  white: '#FFFFFF',
+  brandGreen: '#00FFB0',
+};
