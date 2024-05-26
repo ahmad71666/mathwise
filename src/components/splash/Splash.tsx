@@ -12,8 +12,8 @@ const Splash: FC<SplashProps> = ({ navigation }) => {
   useEffect(() => {
 
     setTimeout(() => {
-      navigation?.navigate('Home');
-    }, 3000);
+      navigation?.replace('Home');
+    }, 5000);
 
   }, []);
 
