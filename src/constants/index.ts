@@ -1,33 +1,3 @@
-// Elements
-import ElementPDF1 from '../assets/documents/elements-set-of-theory/CamScanner051620241220.pdf';
-import ElementPDF2 from '../assets/documents/elements-set-of-theory/CamScanner051620241227.pdf';
-import ElementPDF3 from '../assets/documents/elements-set-of-theory/CamScanner051620241234.pdf';
-import ElementPDF4 from '../assets/documents/elements-set-of-theory/CamScanner051620241238.pdf';
-// Linear
-import LinearPDF1 from '../assets/documents/linear-algebra/LinearTransformation.pdf';
-import LinearPDF2 from '../assets/documents/linear-algebra/SubspaceLinearCombinationSpanningSet.pdf';
-import LinearPDF3 from '../assets/documents/linear-algebra/VectorSpace.pdf';
-// Number Theory
-import NumberPDF1 from '../assets/documents/number-theory/CamScanner031720241054.pdf';
-// Ordinary Differential
-import OrdinaryPDF1 from '../assets/documents/ordinary-differential-equation/NewDoc10-25-20232126.pdf';
-import OrdinaryPDF2 from '../assets/documents/ordinary-differential-equation/NewDoc11-05-20231853.pdf';
-import OrdinaryPDF3 from '../assets/documents/ordinary-differential-equation/NewDoc12-22-20231744.pdf';
-import OrdinaryPDF4 from '../assets/documents/ordinary-differential-equation/NewDoc12-22-20231824.pdf';
-import OrdinaryPDF5 from '../assets/documents/ordinary-differential-equation/exercise438141.pdf';
-import OrdinaryPDF6 from '../assets/documents/ordinary-differential-equation/exercise43814.pdf';
-// Calculas
-import CalculasPDF1 from '../assets/documents/calculas/CALCULAS35.pdf';
-import CalculasPDF2 from '../assets/documents/calculas/CALCULUS-III.pdf';
-import CalculasPDF3 from '../assets/documents/calculas/Calculus-.pdf';
-import CalculasPDF4 from '../assets/documents/calculas/caculuspresentation.pdf';
-import CalculasPDF5 from '../assets/documents/calculas/calculustopicnotes.pdf';
-import CalculasPDF6 from '../assets/documents/calculas/calculuslllbeforemids1.pdf';
-import CalculasPDF7 from '../assets/documents/calculas/calculuslllbeforemids.pdf';
-import CalculasPDF8 from '../assets/documents/calculas/calculus31.pdf';
-import CalculasPDF9 from '../assets/documents/calculas/calculus3.pdf';
-import CalculasPDF10 from '../assets/documents/calculas/calculuspresentation.pdf';
-
 export const SUBJECTS = [
   {
     id: 1,
@@ -36,22 +6,26 @@ export const SUBJECTS = [
       {
         id: 1,
         title: '12.20',
-        source: ElementPDF1,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/elements-set-of-theory/CamScanner051620241220.pdf',
       },
       {
         id: 2,
         title: '12.27',
-        source: ElementPDF2,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/elements-set-of-theory/CamScanner051620241227.pdf',
       },
       {
         id: 3,
         title: '12.34',
-        source: ElementPDF3,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/elements-set-of-theory/CamScanner051620241234.pdf',
       },
       {
         id: 4,
         title: '12.38',
-        source: ElementPDF4,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/elements-set-of-theory/CamScanner051620241238.pdf',
       },
     ],
   },
@@ -62,17 +36,20 @@ export const SUBJECTS = [
       {
         id: 1,
         title: 'Linear Transformation',
-        source: LinearPDF1,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/linear-algebra/LinearTransformation.pdf',
       },
       {
         id: 2,
         title: 'Subspace, Linear, Combination & Spanning Set',
-        source: LinearPDF2,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/linear-algebra/SubspaceLinearCombinationSpanningSet.pdf',
       },
       {
         id: 3,
         title: 'Vector Space',
-        source: LinearPDF3,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/linear-algebra/VectorSpace.pdf',
       },
     ],
   },
@@ -83,32 +60,38 @@ export const SUBJECTS = [
       {
         id: 1,
         title: '21.26',
-        source: OrdinaryPDF1,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/NewDoc10-25-20232126.pdf',
       },
       {
         id: 2,
         title: '18.53',
-        source: OrdinaryPDF2,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/NewDoc11-05-20231853.pdf',
       },
       {
         id: 3,
         title: '17.44',
-        source: OrdinaryPDF3,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/NewDoc12-22-20231744.pdf',
       },
       {
         id: 4,
         title: '18.24',
-        source: OrdinaryPDF4,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/NewDoc12-22-20231824.pdf',
       },
       {
         id: 5,
         title: '8-14 1',
-        source: OrdinaryPDF5,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/exercise438141.pdf',
       },
       {
         id: 6,
         title: '8-14',
-        source: OrdinaryPDF6,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/ordinary-differential-equation/exercise43814.pdf',
       },
     ],
   },
@@ -119,7 +102,8 @@ export const SUBJECTS = [
       {
         id: 1,
         title: '10.54',
-        source: NumberPDF1,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/number-theory/CamScanner031720241054.pdf',
       },
     ],
   },
@@ -130,52 +114,62 @@ export const SUBJECTS = [
       {
         id: 1,
         title: 'CALCULAS 3 (5)',
-        source: CalculasPDF1,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/CALCULAS35.pdf',
       },
       {
         id: 2,
         title: 'CALCULUS-III',
-        source: CalculasPDF2,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/CALCULUS-III.pdf',
       },
       {
         id: 3,
         title: 'Calculus -.pdf',
-        source: CalculasPDF3,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/Calculus-.pdf',
       },
       {
         id: 4,
         title: 'caculus presentation',
-        source: CalculasPDF4,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/caculuspresentation.pdf',
       },
       {
         id: 5,
         title: 'calculus ( topic notes )',
-        source: CalculasPDF5,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculustopicnotes.pdf',
       },
       {
         id: 6,
         title: 'calculus -lll before mids 1',
-        source: CalculasPDF6,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculuslllbeforemids1.pdf',
       },
       {
         id: 7,
         title: 'calculus -lll before mids',
-        source: CalculasPDF7,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculuslllbeforemids.pdf',
       },
       {
         id: 8,
         title: 'calculus 3 (1)',
-        source: CalculasPDF8,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculus31.pdf',
       },
       {
         id: 9,
         title: 'calculus 3',
-        source: CalculasPDF9,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculus3.pdf',
       },
       {
         id: 10,
         title: 'calculus presentation',
-        source: CalculasPDF10,
+        source:
+          'http://195.35.24.183:8000/public/uploads/documents/calculas/calculuspresentation.pdf',
       },
     ],
   },

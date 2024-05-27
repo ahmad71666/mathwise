@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import Pdf from 'react-native-pdf';
 import Theme from '../../theme/theme';
-import LinearPDF1 from '../../assets/documents/linear-algebra/LinearTransformation.pdf';
 
 export default function Display({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(
@@ -21,7 +20,7 @@ export default function Display({ route, navigation }) {
   const [percentage, setPercentage] = useState(0);
 
   var uri = route.params.uri;
-  console.log(uri,"uri");
+
   const source = {
     uri: uri,
     cache: true,
@@ -70,7 +69,7 @@ export default function Display({ route, navigation }) {
             setModalVisible(true);
             setPercentage((num * 100).toFixed(1));
           }}
-          source={uri}
+          source={source}
           onLoadComplete={(numberOfPages, filePath) => {
             setModalVisible(false);
           }}
