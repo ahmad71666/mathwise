@@ -23,7 +23,7 @@ export default function Display({ route, navigation }) {
 
   const source = {
     uri: uri,
-    cache: true,
+    // cache: true,
   };
 
   return (
