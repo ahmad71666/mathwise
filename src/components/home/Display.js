@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import Pdf from 'react-native-pdf';
 import Theme from '../../theme/theme';
 import { downloadFileSaveToDocs } from '../../util/util';
+import PDFView from 'react-native-view-pdf';
 
 export default function Display({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -25,6 +25,7 @@ export default function Display({ route, navigation }) {
     setModalVisible(true);
     const downloadResult = await downloadFileSaveToDocs({
       uri,
+      name: uri?.split('documents/')[1] ?? 'ABC',
       onProgress: (percentage) => {
         setPercentage(percentage);
       },
@@ -76,23 +77,19 @@ export default function Display({ route, navigation }) {
           </View>
         </Modal>
         {file ? (
-          <Pdf
-            renderActivityIndicator={abc => console.log(abc)}
-            trustAllCerts={false}
-            source={{
-              uri: file
-            }}
-            onLoadComplete={(numberOfPages, filePath) => {
+          <PDFView
+            fadeInDuration={250.0}
+            style={{ flex: 1 }}
+            resource={file}
+            resourceType={"file"}
+            onLoad={() => {
+              console.log(`PDF rendered from`)
               setModalVisible(false);
             }}
-            onError={error => {
-              console.log(error);
-              navigation?.goBack();
-              setTimeout(() => {
-                alert("Error While Opening PDF");
-              }, 1000);
+            onError={(error) => {
+              console.log('Cannot render PDF', error)
+              setModalVisible(false);
             }}
-            style={styles.pdf}
           />
         ) : null}
       </View>
