@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Dimensions,
@@ -12,19 +12,32 @@ import {
 } from 'react-native';
 import Pdf from 'react-native-pdf';
 import Theme from '../../theme/theme';
+import { downloadFileSaveToDocs } from '../../util/util';
 
 export default function Display({ route, navigation }) {
-  const [modalVisible, setModalVisible] = useState(
-    Platform.OS == 'ios' ? true : false,
-  );
+  const [modalVisible, setModalVisible] = useState(false);
   const [percentage, setPercentage] = useState(0);
+  const [file, setFile] = useState(null);
 
   var uri = route.params.uri;
 
-  const source = {
-    uri: uri,
-    // cache: true,
+  const startFileDownloading = async () => {
+    setModalVisible(true);
+    const downloadResult = await downloadFileSaveToDocs({
+      uri,
+      onProgress: (percentage) => {
+        setPercentage(percentage);
+      },
+    });
+
+    if (downloadResult) {
+      setFile(downloadResult);
+    }
   };
+
+  useEffect(() => {
+    startFileDownloading();
+  }, []);
 
   return (
     <SafeAreaView style={Theme.SafeArea}>
@@ -62,29 +75,26 @@ export default function Display({ route, navigation }) {
             </Text>
           </View>
         </Modal>
-        <Pdf
-          renderActivityIndicator={abc => console.log(abc)}
-          trustAllCerts={false}
-          onLoadProgress={num => {
-            setModalVisible(true);
-            setPercentage((num * 100).toFixed(1));
-          }}
-          source={source}
-          onLoadComplete={(numberOfPages, filePath) => {
-            setModalVisible(false);
-          }}
-          onPageChanged={(page, numberOfPages) => {
-            // console.log(`Current page: ${page}`);
-          }}
-          onError={error => {
-            console.log(error);
-          }}
-          onPressLink={uri => {
-            // console.log(`Link pressed: ${uri}`);
-          }}
-          style={styles.pdf}
-        />
-
+        {file ? (
+          <Pdf
+            renderActivityIndicator={abc => console.log(abc)}
+            trustAllCerts={false}
+            source={{
+              uri: file
+            }}
+            onLoadComplete={(numberOfPages, filePath) => {
+              setModalVisible(false);
+            }}
+            onError={error => {
+              console.log(error);
+              navigation?.goBack();
+              setTimeout(() => {
+                alert("Error While Opening PDF");
+              }, 1000);
+            }}
+            style={styles.pdf}
+          />
+        ) : null}
       </View>
     </SafeAreaView>
   );
