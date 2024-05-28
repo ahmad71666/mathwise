@@ -10,7 +10,7 @@ export const downloadFileSaveToDocs = async ({
   onProgress: (percentage: number) => void;
 }) => {
   try {
-    const filePath = `${ReactNativeBlobUtil.fs.dirs.DocumentDir}/${name}.pdf`;
+    const filePath = `${ReactNativeBlobUtil.fs.dirs.DocumentDir}/${name}`;
 
     // Check if the file already exists
     const fileExists = await ReactNativeBlobUtil.fs.exists(filePath);
