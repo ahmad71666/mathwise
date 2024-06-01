@@ -13,6 +13,7 @@ import {
 import Theme from '../../theme/theme';
 import { downloadFileSaveToDocs } from '../../util/util';
 import PDFView from 'react-native-view-pdf';
+import { RefreshIcon } from '../../assets/svg';
 
 export default function Display({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +22,11 @@ export default function Display({ route, navigation }) {
 
   var uri = route.params.uri;
 
-  const startFileDownloading = async () => {
+  const refreshFileNow = () => {
+    startFileDownloading(true);
+  }
+
+  const startFileDownloading = async (fileRefresh) => {
     setModalVisible(true);
     const downloadResult = await downloadFileSaveToDocs({
       uri,
@@ -29,6 +34,7 @@ export default function Display({ route, navigation }) {
       onProgress: (percentage) => {
         setPercentage(percentage);
       },
+      fileRefresh: fileRefresh
     });
 
     if (downloadResult) {
@@ -43,11 +49,16 @@ export default function Display({ route, navigation }) {
   return (
     <SafeAreaView style={Theme.SafeArea}>
       <View style={{ flex: 1 }}>
-        <TouchableOpacity
-          onPress={() => navigation?.goBack()}
-          style={[styles.backBtn, { zIndex: 999 }]}>
-          <Text style={styles.backBtnTxt}>{' <  Go Back'}</Text>
-        </TouchableOpacity>
+        <View style={styles.backBtn}>
+          <TouchableOpacity
+            onPress={() => navigation?.goBack()}
+            style={[{ zIndex: 999 }]}>
+            <Text style={styles.backBtnTxt}>{' <  Go Back'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ zIndex: 9999 }} onPress={refreshFileNow}>
+            <RefreshIcon color={"black"} />
+          </TouchableOpacity>
+        </View>
         <Modal visible={modalVisible}>
           <View
             style={{
@@ -55,11 +66,15 @@ export default function Display({ route, navigation }) {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <TouchableOpacity
-              onPress={() => navigation?.goBack()}
-              style={styles.backBtn}>
-              <Text style={styles.backBtnTxt}>{' <  Go Back'}</Text>
-            </TouchableOpacity>
+            <View style={styles.backBtn}>
+              <TouchableOpacity
+                onPress={() => navigation?.goBack()}>
+                <Text style={styles.backBtnTxt}>{' <  Go Back'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity disabled={true} onPress={refreshFileNow}>
+                <RefreshIcon color={"black"} />
+              </TouchableOpacity>
+            </View>
             <ActivityIndicator color={'blue'} size={25} />
             <Text style={{ fontWeight: 'bold', marginTop: 3, color: 'black' }}>
               {`${percentage} %`}
@@ -113,7 +128,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     position: 'absolute',
     top: Platform.OS == 'ios' ? '8%' : '3%',
-    right: 10,
+    flexDirection: "row",
+    columnGap: 10,
+    alignItems: "center",
+    paddingHorizontal: 20,
+    width: "100%",
+    justifyContent: "space-between"
   },
   backBtnTxt: {
     fontSize: 14,
