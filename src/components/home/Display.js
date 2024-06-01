@@ -23,6 +23,7 @@ export default function Display({ route, navigation }) {
   var uri = route.params.uri;
 
   const refreshFileNow = () => {
+    setFile(null);
     startFileDownloading(true);
   }
 
@@ -39,6 +40,10 @@ export default function Display({ route, navigation }) {
 
     if (downloadResult) {
       setFile(downloadResult);
+    }
+
+    if (fileRefresh) {
+      setModalVisible(false);
     }
   };
 

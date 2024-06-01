@@ -16,12 +16,19 @@ export const downloadFileSaveToDocs = async ({
 
     // Check if the file already exists
     const fileExists = await ReactNativeBlobUtil.fs.exists(filePath);
+
+    // If file exists and fileRefresh is true, delete the existing file
+    if (fileExists && fileRefresh) {
+      await ReactNativeBlobUtil.fs.unlink(filePath);
+    }
+
+    // If file exists and fileRefresh is false, return the existing file path
     if (fileExists && !fileRefresh) {
       console.log('exists');
       return `${filePath}`;
     }
 
-    // If the file does not exist, download it
+    // If the file does not exist or was deleted, download it
     const fetch = ReactNativeBlobUtil.config({
       fileCache: true,
       path: filePath,
