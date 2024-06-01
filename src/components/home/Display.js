@@ -107,8 +107,9 @@ export default function Display({ route, navigation }) {
               setModalVisible(false);
             }}
             onError={(error) => {
-              console.log('Cannot render PDF', error)
               setModalVisible(false);
+              console.log('Cannot render PDF', error)
+              refreshFileNow();
             }}
           />
         ) : null}
