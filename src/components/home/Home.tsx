@@ -1,15 +1,18 @@
-import React, { FC } from "react";
-import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, TouchableOpacity, Dimensions } from "react-native";
+import React, { FC, useEffect } from "react";
+import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, TouchableOpacity } from "react-native";
 import Theme from "../../theme/theme";
 import { HomeBG } from "../../assets/images";
 import { FontStyle } from "../../theme/FontStyle";
-import { SUBJECTS } from "../../constants";
+import firestore from '@react-native-firebase/firestore';
+import { useMainApp } from "../../context/MainAppContext";
 
 interface HomeProps {
     navigation: any;
 }
 
 const Home: FC<HomeProps> = ({ navigation }) => {
+
+    const mainApp = useMainApp();
 
     const GoToSubject = (id: number) => {
         navigation?.navigate('Lessons', {
@@ -30,6 +33,27 @@ const Home: FC<HomeProps> = ({ navigation }) => {
         )
     }
 
+    const fetchSubjects = async () => {
+        try {
+            const snapshot = await firestore().collection('subjects').get();
+
+            const subjects = snapshot?.docs.map(doc => ({
+                id: doc.data().id,
+                title: doc.data().title,
+                data: doc.data().data,
+            }));
+
+            mainApp?.setSubjectsData(subjects);
+
+        } catch (error) {
+            console.error('Error fetching subjects:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchSubjects();
+    }, []);
+
 
     return (
         <SafeAreaView style={Theme.SafeArea}>
@@ -45,7 +69,7 @@ const Home: FC<HomeProps> = ({ navigation }) => {
                                 MATH WISE
                             </Text>
                         }
-                        data={SUBJECTS}
+                        data={mainApp?.subjectsData}
                         renderItem={renderSubjects}
                         numColumns={2}
                         contentContainerStyle={styles.areaGap}

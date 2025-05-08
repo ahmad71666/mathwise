@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609121024120",
+    "project_id": "mathwise-255bd",
+    "storage_bucket": "mathwise-255bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609121024120:android:7b9b555745152ec18a958d",
+        "android_client_info": {
+          "package_name": "com.mathwise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTEGeD0W2vwHDXWZcBEmcsacQh1naJa7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

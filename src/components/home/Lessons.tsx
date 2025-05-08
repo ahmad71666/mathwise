@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, Toucha
 import Theme from "../../theme/theme";
 import { HomeBG } from "../../assets/images";
 import { FontStyle } from "../../theme/FontStyle";
-import { SUBJECTS } from "../../constants";
+import { useMainApp } from "../../context/MainAppContext";
 
 interface LessonsProps {
     route: any;
@@ -12,11 +12,13 @@ interface LessonsProps {
 
 const Lessons: FC<LessonsProps> = ({ route, navigation }) => {
 
+    const mainApp = useMainApp();
+
     const subjectID = route?.params?.id;
 
     const selectedSubject = useMemo(() => {
 
-        const subject = SUBJECTS?.find(iSubject => iSubject?.id === subjectID);
+        const subject = mainApp?.subjectsData?.find(iSubject => iSubject?.id === subjectID);
 
         return subject;
 
